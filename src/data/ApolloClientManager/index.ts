@@ -363,10 +363,12 @@ export class ApolloClientManager {
     channel: string
   ) => {
     const idsOfMissingVariants = checkoutlines
-      ?.filter(line => !line.variant || !line.totalPrice)
+      ?.filter(line => line.variant || line.totalPrice)
       .map(line => line.variant.id);
     const linesWithProperVariant =
-      checkoutlines?.filter(line => line.variant && line.totalPrice) || [];
+      checkoutlines?.filter(line => !line.variant && !line.totalPrice) || [];
+    console.log("missing:", idsOfMissingVariants);
+    console.log("proper:", linesWithProperVariant);
 
     let variants: CheckoutProductVariants_productVariants | null | undefined;
     if (idsOfMissingVariants && idsOfMissingVariants.length) {
