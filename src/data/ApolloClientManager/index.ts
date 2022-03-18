@@ -363,18 +363,17 @@ export class ApolloClientManager {
     channel: string
   ) => {
     const idsOfMissingVariants = checkoutlines
-      ?.filter(line => line.variant || line.totalPrice)
+      ?.filter(line => (line.variant || line.totalPrice) && line.quantity > 0)
       .map(line => line.variant.id);
     const linesWithProperVariant =
       checkoutlines?.filter(line => !line.variant && !line.totalPrice) || [];
-    console.log("missing:", idsOfMissingVariants);
-    console.log("proper:", linesWithProperVariant);
 
     let variants: CheckoutProductVariants_productVariants | null | undefined;
     if (idsOfMissingVariants && idsOfMissingVariants.length) {
       try {
         const observable = this.client.watchQuery<CheckoutProductVariants, any>(
           {
+            fetchPolicy: "no-cache",
             query: CheckoutQueries.checkoutProductVariants,
             variables: {
               channel,
@@ -464,7 +463,6 @@ export class ApolloClientManager {
         variant: line.variant,
       };
     });
-
     return {
       data: [
         ...linesWithMissingVariantUpdated,
