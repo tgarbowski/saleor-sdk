@@ -358,22 +358,28 @@ export class ApolloClientManager {
     return {};
   };
 
+  // getVariantQuantity = async (variantId: string, quantity: number) => {};
+
   getRefreshedCheckoutLines = async (
     checkoutlines: ICheckoutModelLine[] | null,
     channel: string
   ) => {
+    const serializedState = this.client.cache.extract();
+    console.log(serializedState);
     const idsOfMissingVariants = checkoutlines
-      ?.filter(line => (line.variant || line.totalPrice) && line.quantity > 0)
+      ?.filter(line => !line.variant || !line.totalPrice)
       .map(line => line.variant.id);
     const linesWithProperVariant =
-      checkoutlines?.filter(line => !line.variant && !line.totalPrice) || [];
+      checkoutlines?.filter(line => line.variant && line.totalPrice) || [];
 
     let variants: CheckoutProductVariants_productVariants | null | undefined;
     if (idsOfMissingVariants && idsOfMissingVariants.length) {
       try {
+        // await this.client.clearStore();
+        console.log("test222");
         const observable = this.client.watchQuery<CheckoutProductVariants, any>(
           {
-            fetchPolicy: "no-cache",
+            // fetchPolicy: "no-cache",
             query: CheckoutQueries.checkoutProductVariants,
             variables: {
               channel,
