@@ -43,6 +43,11 @@ export interface SetShippingMethodJobInput {
   shippingMethodId: string;
 }
 
+export interface SetShippingLockerIdJobInput {
+  checkoutId: string;
+  lockerId: string;
+}
+
 export interface AddPromoCodeJobInput {
   checkoutId: string;
   promoCode: string;

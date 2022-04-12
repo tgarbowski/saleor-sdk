@@ -114,5 +114,11 @@
     "react-apollo": "^3.1.5"
   },
   "type": "commonjs",
-  "typings": "./lib/index.d.ts"
+  "typings": "./lib/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/mirumee/saleor-sdk/issues"
+  },
+  "directories": {
+    "lib": "lib"
+  }
 }

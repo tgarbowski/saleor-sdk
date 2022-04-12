@@ -73,6 +73,10 @@ import {
   UpdateCheckoutShippingMethod,
   UpdateCheckoutShippingMethodVariables,
 } from "../../mutations/gqlTypes/UpdateCheckoutShippingMethod";
+import {
+  UpdateCheckoutShippingLockerId,
+  UpdateCheckoutShippingLockerIdVariables,
+} from "../../mutations/gqlTypes/UpdateCheckoutShippingLockerId";
 import * as CheckoutQueries from "../../queries/checkout";
 import { CheckoutDetails } from "../../queries/gqlTypes/CheckoutDetails";
 import {
@@ -364,8 +368,6 @@ export class ApolloClientManager {
     checkoutlines: ICheckoutModelLine[] | null,
     channel: string
   ) => {
-    const serializedState = this.client.cache.extract();
-    console.log(serializedState);
     const idsOfMissingVariants = checkoutlines
       ?.filter(line => !line.variant || !line.totalPrice)
       .map(line => line.variant.id);
@@ -814,6 +816,32 @@ export class ApolloClientManager {
           data: this.constructCheckoutModel(
             data.checkoutShippingMethodUpdate.checkout
           ),
+        };
+      }
+      return {};
+    } catch (error) {
+      return {
+        error,
+      };
+    }
+  };
+
+  setShippingLockerId = async (lockerId: string, checkoutId: string) => {
+    try {
+      const { errors } = await this.client.mutate<
+        UpdateCheckoutShippingLockerId,
+        UpdateCheckoutShippingLockerIdVariables
+      >({
+        mutation: CheckoutMutations.updateCheckoutShippingLockerIdMutation,
+        variables: {
+          checkoutId,
+          lockerId,
+        },
+      });
+
+      if (errors?.length) {
+        return {
+          error: errors,
         };
       }
       return {};

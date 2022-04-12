@@ -16,6 +16,7 @@ import {
   SetShippingAddressJobInput,
   SetBillingAddressJobInput,
   SetBillingAddressWithEmailJobInput,
+  SetShippingLockerIdJobInput,
 } from "./types";
 import { JobsHandler } from "../JobsHandler";
 
@@ -236,6 +237,32 @@ class CheckoutJobs extends JobsHandler<{}> {
       shippingMethod: data?.shippingMethod,
     });
     return { data };
+  };
+
+  setShippingLockerId = async ({
+    checkoutId,
+    lockerId,
+  }: SetShippingLockerIdJobInput): PromiseCheckoutJobRunResponse => {
+    const checkout = LocalStorageHandler.getCheckout();
+
+    const { error } = await this.apolloClientManager.setShippingLockerId(
+      lockerId,
+      checkoutId
+    );
+
+    if (error) {
+      return {
+        dataError: {
+          error,
+          type: DataErrorCheckoutTypes.SET_SHIPPING_METHOD,
+        },
+      };
+    }
+
+    this.localStorageHandler.setCheckout({
+      ...checkout,
+    });
+    return {};
   };
 
   addPromoCode = async ({

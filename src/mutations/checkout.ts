@@ -142,6 +142,25 @@ export const updateCheckoutShippingMethodMutation = gql`
   }
 `;
 
+export const updateCheckoutShippingLockerIdMutation = gql`
+  mutation UpdatePrivateMetadata($checkoutId: ID!, $lockerId: String!) {
+    updateMetadata(
+      id: $checkoutId
+      input: [{ key: "locker_id", value: $lockerId }]
+    ) {
+      item {
+        metadata {
+          key
+          value
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+  }
+`;
+
 export const addCheckoutPromoCode = gql`
   ${checkoutFragment}
   ${checkoutErrorFragment}
