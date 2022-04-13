@@ -121,6 +121,22 @@ export const updateCheckoutShippingAddressMutation = gql`
   }
 `;
 
+export const updateCheckoutShippingNipMutation = gql`
+  mutation UpdatePrivateMetadata($checkoutId: ID!, $nip: String!) {
+    updateMetadata(id: $checkoutId, input: [{ key: "vat_id", value: $nip }]) {
+      item {
+        metadata {
+          key
+          value
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+  }
+`;
+
 export const updateCheckoutShippingMethodMutation = gql`
   ${checkoutFragment}
   ${checkoutErrorFragment}

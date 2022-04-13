@@ -181,6 +181,35 @@ export class SaleorCheckoutAPI extends ErrorListener {
     };
   };
 
+  setShippingNip = async (nip: string): CheckoutResponse => {
+    const checkoutId = this.saleorState.checkout?.id;
+
+    if (checkoutId) {
+      const { data, dataError } = await this.jobsManager.run(
+        "checkout",
+        "setShippingNip",
+        {
+          checkoutId,
+          nip,
+        }
+      );
+      return {
+        data,
+        dataError,
+        pending: false,
+      };
+    }
+    return {
+      functionError: {
+        error: new Error(
+          "You need to set shipping address before setting shipping method."
+        ),
+        type: FunctionErrorCheckoutTypes.SHIPPING_ADDRESS_NOT_SET,
+      },
+      pending: false,
+    };
+  };
+
   setBillingAddress = async (
     billingAddress: IAddress,
     email?: string

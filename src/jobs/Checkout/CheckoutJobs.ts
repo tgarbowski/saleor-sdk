@@ -17,6 +17,7 @@ import {
   SetBillingAddressJobInput,
   SetBillingAddressWithEmailJobInput,
   SetShippingLockerIdJobInput,
+  SetShippingNipJobInput,
 } from "./types";
 import { JobsHandler } from "../JobsHandler";
 
@@ -248,6 +249,32 @@ class CheckoutJobs extends JobsHandler<{}> {
     const { error } = await this.apolloClientManager.setShippingLockerId(
       lockerId,
       checkoutId
+    );
+
+    if (error) {
+      return {
+        dataError: {
+          error,
+          type: DataErrorCheckoutTypes.SET_SHIPPING_METHOD,
+        },
+      };
+    }
+
+    this.localStorageHandler.setCheckout({
+      ...checkout,
+    });
+    return {};
+  };
+
+  setShippingNip = async ({
+    checkoutId,
+    nip,
+  }: SetShippingNipJobInput): PromiseCheckoutJobRunResponse => {
+    const checkout = LocalStorageHandler.getCheckout();
+
+    const { error } = await this.apolloClientManager.setShippingNip(
+      checkoutId,
+      nip
     );
 
     if (error) {

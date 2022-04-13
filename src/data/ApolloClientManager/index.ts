@@ -1,5 +1,9 @@
 import ApolloClient from "apollo-client";
 
+import {
+  UpdateCheckoutShippingNip,
+  UpdateCheckoutShippingNipVariables,
+} from "../../mutations/gqlTypes/UpdateCheckoutShippingNip";
 import { Checkout } from "../../fragments/gqlTypes/Checkout";
 import { Payment } from "../../fragments/gqlTypes/Payment";
 import { User } from "../../fragments/gqlTypes/User";
@@ -378,7 +382,6 @@ export class ApolloClientManager {
     if (idsOfMissingVariants && idsOfMissingVariants.length) {
       try {
         // await this.client.clearStore();
-        console.log("test222");
         const observable = this.client.watchQuery<CheckoutProductVariants, any>(
           {
             // fetchPolicy: "no-cache",
@@ -839,6 +842,31 @@ export class ApolloClientManager {
         },
       });
 
+      if (errors?.length) {
+        return {
+          error: errors,
+        };
+      }
+      return {};
+    } catch (error) {
+      return {
+        error,
+      };
+    }
+  };
+
+  setShippingNip = async (checkoutId: string, nip: string) => {
+    try {
+      const { errors } = await this.client.mutate<
+        UpdateCheckoutShippingNip,
+        UpdateCheckoutShippingNipVariables
+      >({
+        mutation: CheckoutMutations.updateCheckoutShippingNipMutation,
+        variables: {
+          checkoutId,
+          nip,
+        },
+      });
       if (errors?.length) {
         return {
           error: errors,
