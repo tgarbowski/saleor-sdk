@@ -66,6 +66,7 @@ export interface ICheckoutAddress {
     code?: string;
     country?: string;
   };
+  vatId?: string;
 }
 
 export interface ICheckoutModelShippingMethod {

@@ -511,6 +511,7 @@ export interface AddressInput {
   country?: CountryCode | null;
   countryArea?: string | null;
   phone?: string | null;
+  vatId?: string | null;
 }
 
 export interface AttributeInput {

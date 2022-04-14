@@ -631,8 +631,12 @@ export class ApolloClientManager {
           postalCode: shippingAddress.postalCode,
           streetAddress1: shippingAddress.streetAddress1,
           streetAddress2: shippingAddress.streetAddress2,
+          vatId: shippingAddress.vatId,
         },
       };
+
+      console.log("apolloClientManager: ", shippingAddress);
+
       const { data, errors } = await this.client.mutate<
         UpdateCheckoutShippingAddress,
         UpdateCheckoutShippingAddressVariables

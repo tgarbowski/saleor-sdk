@@ -132,6 +132,8 @@ export class SaleorCheckoutAPI extends ErrorListener {
       variantId: item?.variant!.id,
     }));
 
+    console.log("checkout: ", shippingAddress);
+
     if (alteredLines && checkoutId) {
       const { data, dataError } = await this.jobsManager.run(
         "checkout",

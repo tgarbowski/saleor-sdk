@@ -116,6 +116,8 @@ class CheckoutJobs extends JobsHandler<{}> {
   }: SetShippingAddressJobInput): PromiseCheckoutJobRunResponse => {
     const checkout = LocalStorageHandler.getCheckout();
 
+    console.log("checkoutJobs: ", shippingAddress);
+
     const { data, error } = await this.apolloClientManager.setShippingAddress(
       shippingAddress,
       email,
