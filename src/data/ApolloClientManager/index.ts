@@ -1,9 +1,9 @@
 import ApolloClient from "apollo-client";
 
 import {
-  UpdateCheckoutShippingNip,
-  UpdateCheckoutShippingNipVariables,
-} from "../../mutations/gqlTypes/UpdateCheckoutShippingNip";
+  UpdateCheckoutInvoice,
+  UpdateCheckoutInvoiceVariables,
+} from "../../mutations/gqlTypes/UpdateCheckoutInvoice";
 import { Checkout } from "../../fragments/gqlTypes/Checkout";
 import { Payment } from "../../fragments/gqlTypes/Payment";
 import { User } from "../../fragments/gqlTypes/User";
@@ -857,11 +857,11 @@ export class ApolloClientManager {
     }
   };
 
-  setInvoice = async (checkoutId: string, invoice: boolean) => {
+  setInvoice = async (checkoutId: string, invoice: string) => {
     try {
       const { errors } = await this.client.mutate<
-        UpdateCheckoutShippingNip,
-        UpdateCheckoutShippingNipVariables
+        UpdateCheckoutInvoice,
+        UpdateCheckoutInvoiceVariables
       >({
         mutation: CheckoutMutations.updateCheckoutInvoiceMutation,
         variables: {

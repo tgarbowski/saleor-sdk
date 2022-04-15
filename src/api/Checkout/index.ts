@@ -181,7 +181,7 @@ export class SaleorCheckoutAPI extends ErrorListener {
     };
   };
 
-  setShippingNip = async (invoice: boolean): CheckoutResponse => {
+  setShippingNip = async (invoice: string): CheckoutResponse => {
     const checkoutId = this.saleorState.checkout?.id;
 
     if (checkoutId) {
