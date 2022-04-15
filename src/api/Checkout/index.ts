@@ -132,8 +132,6 @@ export class SaleorCheckoutAPI extends ErrorListener {
       variantId: item?.variant!.id,
     }));
 
-    console.log("checkout: ", shippingAddress);
-
     if (alteredLines && checkoutId) {
       const { data, dataError } = await this.jobsManager.run(
         "checkout",
@@ -183,16 +181,16 @@ export class SaleorCheckoutAPI extends ErrorListener {
     };
   };
 
-  setShippingNip = async (nip: string): CheckoutResponse => {
+  setShippingNip = async (invoice: boolean): CheckoutResponse => {
     const checkoutId = this.saleorState.checkout?.id;
 
     if (checkoutId) {
       const { data, dataError } = await this.jobsManager.run(
         "checkout",
-        "setShippingNip",
+        "setInvoice",
         {
           checkoutId,
-          nip,
+          invoice,
         }
       );
       return {

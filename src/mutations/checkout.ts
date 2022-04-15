@@ -121,9 +121,31 @@ export const updateCheckoutShippingAddressMutation = gql`
   }
 `;
 
-export const updateCheckoutShippingNipMutation = gql`
-  mutation UpdatePrivateMetadata($checkoutId: ID!, $nip: String!) {
-    updateMetadata(id: $checkoutId, input: [{ key: "vat_id", value: $nip }]) {
+export const updateCheckoutShippingLockerIdMutation = gql`
+  mutation UpdatePrivateMetadata($checkoutId: ID!, $lockerId: String!) {
+    updatePrivateMetadata(
+      id: $checkoutId
+      input: [{ key: "locker_id", value: $lockerId }]
+    ) {
+      item {
+        metadata {
+          key
+          value
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+  }
+`;
+
+export const updateCheckoutInvoiceMutation = gql`
+  mutation UpdatePrivateMetadata($checkoutId: ID!, $invoice: Boolean!) {
+    updatePrivateMetadata(
+      id: $checkoutId
+      input: [{ key: "invoice", value: $invoice }]
+    ) {
       item {
         metadata {
           key
@@ -154,25 +176,6 @@ export const updateCheckoutShippingMethodMutation = gql`
       errors: checkoutErrors {
         ...CheckoutError
       }
-    }
-  }
-`;
-
-export const updateCheckoutShippingLockerIdMutation = gql`
-  mutation UpdatePrivateMetadata($checkoutId: ID!, $lockerId: String!) {
-    updateMetadata(
-      id: $checkoutId
-      input: [{ key: "locker_id", value: $lockerId }]
-    ) {
-      item {
-        metadata {
-          key
-          value
-          __typename
-        }
-        __typename
-      }
-      __typename
     }
   }
 `;

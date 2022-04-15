@@ -17,7 +17,7 @@ import {
   SetBillingAddressJobInput,
   SetBillingAddressWithEmailJobInput,
   SetShippingLockerIdJobInput,
-  SetShippingNipJobInput,
+  SetInvoiceJobInput,
 } from "./types";
 import { JobsHandler } from "../JobsHandler";
 
@@ -115,8 +115,6 @@ class CheckoutJobs extends JobsHandler<{}> {
     channel,
   }: SetShippingAddressJobInput): PromiseCheckoutJobRunResponse => {
     const checkout = LocalStorageHandler.getCheckout();
-
-    console.log("checkoutJobs: ", shippingAddress);
 
     const { data, error } = await this.apolloClientManager.setShippingAddress(
       shippingAddress,
@@ -268,15 +266,15 @@ class CheckoutJobs extends JobsHandler<{}> {
     return {};
   };
 
-  setShippingNip = async ({
+  setInvoice = async ({
     checkoutId,
-    nip,
-  }: SetShippingNipJobInput): PromiseCheckoutJobRunResponse => {
+    invoice,
+  }: SetInvoiceJobInput): PromiseCheckoutJobRunResponse => {
     const checkout = LocalStorageHandler.getCheckout();
 
-    const { error } = await this.apolloClientManager.setShippingNip(
+    const { error } = await this.apolloClientManager.setInvoice(
       checkoutId,
-      nip
+      invoice
     );
 
     if (error) {

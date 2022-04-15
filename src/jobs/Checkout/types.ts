@@ -47,9 +47,9 @@ export interface SetShippingLockerIdJobInput {
   checkoutId: string;
   lockerId: string;
 }
-export interface SetShippingNipJobInput {
+export interface SetInvoiceJobInput {
   checkoutId: string;
-  nip: string;
+  invoice: boolean;
 }
 
 export interface AddPromoCodeJobInput {

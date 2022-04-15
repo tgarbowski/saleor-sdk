@@ -635,8 +635,6 @@ export class ApolloClientManager {
         },
       };
 
-      console.log("apolloClientManager: ", shippingAddress);
-
       const { data, errors } = await this.client.mutate<
         UpdateCheckoutShippingAddress,
         UpdateCheckoutShippingAddressVariables
@@ -859,16 +857,16 @@ export class ApolloClientManager {
     }
   };
 
-  setShippingNip = async (checkoutId: string, nip: string) => {
+  setInvoice = async (checkoutId: string, invoice: boolean) => {
     try {
       const { errors } = await this.client.mutate<
         UpdateCheckoutShippingNip,
         UpdateCheckoutShippingNipVariables
       >({
-        mutation: CheckoutMutations.updateCheckoutShippingNipMutation,
+        mutation: CheckoutMutations.updateCheckoutInvoiceMutation,
         variables: {
           checkoutId,
-          nip,
+          invoice,
         },
       });
       if (errors?.length) {

@@ -6,5 +6,5 @@ export interface UpdateCheckoutShippingNip {
   
 export interface UpdateCheckoutShippingNipVariables {
     checkoutId: string;
-    nip: string;
+    invoice: boolean;
 }
