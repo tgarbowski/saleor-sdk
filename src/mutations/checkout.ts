@@ -142,7 +142,7 @@ export const updateCheckoutShippingLockerIdMutation = gql`
 
 export const updateCheckoutInvoiceMutation = gql`
   mutation UpdatePrivateMetadata($checkoutId: ID!, $invoice: String!) {
-    updatePrivateMetadata(
+    updateMetadata(
       id: $checkoutId
       input: [{ key: "invoice", value: $invoice }]
     ) {
