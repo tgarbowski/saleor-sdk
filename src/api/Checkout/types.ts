@@ -24,6 +24,7 @@ export interface IAddress {
     code?: string;
     country?: string;
   };
+  vatId?: string;
 }
 
 export type IAvailableShippingMethods = Checkout_availableShippingMethods[];
