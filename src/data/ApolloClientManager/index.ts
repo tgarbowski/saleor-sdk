@@ -524,6 +524,7 @@ export class ApolloClientManager {
             postalCode: shippingAddress.postalCode,
             streetAddress1: shippingAddress.streetAddress1,
             streetAddress2: shippingAddress.streetAddress2,
+            vatId: shippingAddress.vatId,
           },
         },
       };
@@ -693,6 +694,7 @@ export class ApolloClientManager {
           postalCode: billingAddress.postalCode,
           streetAddress1: billingAddress.streetAddress1,
           streetAddress2: billingAddress.streetAddress2,
+          vatId: billingAddress.vatId,
         },
         checkoutId,
       };
@@ -750,6 +752,7 @@ export class ApolloClientManager {
           postalCode: billingAddress.postalCode,
           streetAddress1: billingAddress.streetAddress1,
           streetAddress2: billingAddress.streetAddress2,
+          vatId: billingAddress.vatId,
         },
         checkoutId,
         email,
