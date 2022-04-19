@@ -122,8 +122,8 @@ export const updateCheckoutShippingAddressMutation = gql`
 `;
 
 export const updateCheckoutShippingLockerIdMutation = gql`
-  mutation UpdatePrivateMetadata($checkoutId: ID!, $lockerId: String!) {
-    updatePrivateMetadata(
+  mutation UpdateShippingLockerId($checkoutId: ID!, $lockerId: String!) {
+    updateMetadata(
       id: $checkoutId
       input: [{ key: "locker_id", value: $lockerId }]
     ) {
@@ -141,7 +141,7 @@ export const updateCheckoutShippingLockerIdMutation = gql`
 `;
 
 export const updateCheckoutInvoiceMutation = gql`
-  mutation UpdatePrivateMetadata($checkoutId: ID!, $invoice: String!) {
+  mutation UpdateCheckoutInvoice($checkoutId: ID!, $invoice: String!) {
     updateMetadata(
       id: $checkoutId
       input: [{ key: "invoice", value: $invoice }]
