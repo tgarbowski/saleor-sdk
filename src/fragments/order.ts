@@ -31,8 +31,10 @@ export const orderDetailFragment = gql`
     id
     token
     number
-    shippingMethod
-    shippingMethodId
+    shippingMethod {
+      id
+      name
+    }
     shippingAddress {
       ...Address
     }
