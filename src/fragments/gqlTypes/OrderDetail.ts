@@ -50,6 +50,11 @@ export interface OrderDetail_shippingAddress {
   isDefaultShippingAddress: boolean | null;
 }
 
+export interface OrderDetail_shippingMethod {
+  id: string;
+  name: string;
+}
+
 export interface OrderDetail_lines_variant_pricing_priceUndiscounted_gross {
   __typename: "Money";
   /**
@@ -483,6 +488,7 @@ export interface OrderDetail {
    * User-friendly number of an order.
    */
   number: string | null;
+  shippingMethod: OrderDetail_shippingMethod | null;
   shippingAddress: OrderDetail_shippingAddress | null;
   /**
    * List of order lines.

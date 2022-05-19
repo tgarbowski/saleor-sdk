@@ -50,6 +50,11 @@ export interface UserOrderByToken_orderByToken_shippingAddress {
   isDefaultShippingAddress: boolean | null;
 }
 
+export interface UserOrderByToken_orderByToken_shippingMethod {
+  id: string;
+  name: string;
+}
+
 export interface UserOrderByToken_orderByToken_lines_variant_pricing_priceUndiscounted_gross {
   __typename: "Money";
   /**
@@ -504,6 +509,7 @@ export interface UserOrderByToken_orderByToken {
    * User-friendly number of an order.
    */
   number: string | null;
+  shippingMethod: UserOrderByToken_orderByToken_shippingMethod | null;
   shippingAddress: UserOrderByToken_orderByToken_shippingAddress | null;
   /**
    * List of order lines.

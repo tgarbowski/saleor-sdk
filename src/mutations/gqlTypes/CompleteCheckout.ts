@@ -67,6 +67,11 @@ export interface CompleteCheckout_checkoutComplete_order_shippingAddress {
   isDefaultShippingAddress: boolean | null;
 }
 
+export interface CompleteCheckout_checkoutComplete_order_shippingMethod {
+  id: string;
+  name: string;
+}
+
 export interface CompleteCheckout_checkoutComplete_order_lines_variant_pricing_priceUndiscounted_gross {
   __typename: "Money";
   /**
@@ -500,6 +505,7 @@ export interface CompleteCheckout_checkoutComplete_order {
    * User-friendly number of an order.
    */
   number: string | null;
+  shippingMethod: CompleteCheckout_checkoutComplete_order_shippingMethod | null;
   shippingAddress: CompleteCheckout_checkoutComplete_order_shippingAddress | null;
   /**
    * List of order lines.
