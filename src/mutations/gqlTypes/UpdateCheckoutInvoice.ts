@@ -6,5 +6,5 @@ export interface UpdateCheckoutInvoice {
   
 export interface UpdateCheckoutInvoiceVariables {
     checkoutId: string;
-    invoice: string;
+    invoice: boolean;
 }

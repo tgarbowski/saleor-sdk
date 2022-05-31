@@ -181,7 +181,7 @@ export class SaleorCheckoutAPI extends ErrorListener {
     };
   };
 
-  setInvoice = async (invoice: string): CheckoutResponse => {
+  setInvoice = async (invoice: boolean): CheckoutResponse => {
     const checkoutId = this.saleorState.checkout?.id;
 
     if (checkoutId) {

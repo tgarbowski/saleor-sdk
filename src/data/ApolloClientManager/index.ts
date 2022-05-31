@@ -860,7 +860,7 @@ export class ApolloClientManager {
     }
   };
 
-  setInvoice = async (checkoutId: string, invoice: string) => {
+  setInvoice = async (checkoutId: string, invoice: boolean) => {
     try {
       const { errors } = await this.client.mutate<
         UpdateCheckoutInvoice,
