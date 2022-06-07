@@ -108,19 +108,6 @@ export const productFragment = gql`
       id
       name
       slug
-      products(first: 3, channel: $channel) {
-        edges {
-          node {
-            ...BaseProduct
-            ...ProductPricingField
-            category {
-              id
-              name
-              slug
-            }
-          }
-        }
-      }
     }
     images {
       id

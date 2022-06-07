@@ -49,7 +49,7 @@ export interface SetShippingLockerIdJobInput {
 }
 export interface SetInvoiceJobInput {
   checkoutId: string;
-  invoice: boolean;
+  invoice: string;
 }
 
 export interface AddPromoCodeJobInput {
