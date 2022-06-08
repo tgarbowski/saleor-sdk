@@ -31,7 +31,6 @@ export const productList = gql`
           ...ProductPricingField
         }
       }
-      totalCount
       pageInfo {
         ...PageInfo
       }
