@@ -7,6 +7,7 @@ import { NamedObservable } from "../helpers";
 import {
   ICheckoutModel,
   IPaymentModel,
+  IWishlistModel,
   LocalStorageEvents,
   LocalStorageHandler,
   LocalStorageItems,
@@ -21,6 +22,7 @@ export interface SaleorStateLoaded {
   user: boolean;
   signInToken: boolean;
   checkout: boolean;
+  wishlist: boolean;
   payment: boolean;
   summaryPrices: boolean;
 }
@@ -31,6 +33,7 @@ const defaultSaleorStateLoaded = {
   signInToken: false,
   summaryPrices: false,
   user: false,
+  wishlist: false,
 };
 
 export class SaleorState extends NamedObservable<StateItems> {
@@ -43,6 +46,8 @@ export class SaleorState extends NamedObservable<StateItems> {
   signInTokenVerifying?: boolean;
 
   checkout?: ICheckoutModel;
+
+  wishlist?: IWishlistModel;
 
   promoCode?: string;
 
@@ -103,6 +108,10 @@ export class SaleorState extends NamedObservable<StateItems> {
     this.localStorageHandler.subscribeToChange(
       LocalStorageEvents.CLEAR,
       this.onClearLocalStorage
+    );
+    this.localStorageHandler.subscribeToChange(
+      LocalStorageItems.WISHLIST,
+      this.onWishlistUpdate
     );
     this.apolloClientManager.subscribeToUserChange(this.onUserUpdate);
     this.jobsManager.attachEventListener("auth", (event, value) => {
@@ -215,6 +224,14 @@ export class SaleorState extends NamedObservable<StateItems> {
     this.onLoadedUpdate({
       checkout: true,
       summaryPrices: true,
+    });
+  };
+
+  private onWishlistUpdate = (wishlist?: IWishlistModel) => {
+    this.wishlist = wishlist;
+    this.notifyChange(StateItems.WISHLIST, this.wishlist);
+    this.onLoadedUpdate({
+      wishlist: true,
     });
   };
 

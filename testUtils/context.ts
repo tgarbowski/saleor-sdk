@@ -14,6 +14,7 @@ import { LocalStorageManager } from "../src/data/LocalStorageManager";
 import { CategoriesAPI } from "../src/api/categories/categories";
 import { CollectionsAPI } from "../src/api/collections";
 import { ProductsAPI } from "../src/api/products";
+import { SaleorWishlistAPI } from "../src/api/Wishlist";
 
 export async function setupContextAndAPI(): Promise<{
   context: SaleorContextType;
@@ -43,6 +44,7 @@ export async function setupContextAndAPI(): Promise<{
   const authAPI = new AuthAPI(saleorState, jobsManager, config);
   const apiProxy = new APIProxy(client);
   const checkout = new SaleorCheckoutAPI(saleorState, jobsManager, config);
+  const wishlist = new SaleorWishlistAPI(localStorageManager, saleorState);
   const cart = new SaleorCartAPI(
     localStorageManager,
     apolloClientManager,
@@ -65,6 +67,7 @@ export async function setupContextAndAPI(): Promise<{
         collections,
         legacyAPIProxy: apiProxy,
         products,
+        wishlist,
       },
       config,
     },

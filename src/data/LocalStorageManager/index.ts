@@ -128,4 +128,53 @@ export class LocalStorageManager {
 
     return alteredCheckout;
   };
+
+  addItemToWishlist = (variantId: string) => {
+    const lines = this.saleorState.wishlist?.lines || [];
+    let variantInWishlist = lines.find(
+      variant => variant.variant.id === variantId
+    );
+    const alteredLines = lines.filter(
+      variant => variant.variant.id !== variantId
+    );
+    if (variantInWishlist) {
+      alteredLines.push(variantInWishlist);
+    } else {
+      variantInWishlist = {
+        variant: {
+          id: variantId,
+        },
+      };
+      alteredLines.push(variantInWishlist);
+    }
+    const alteredWishlist = this.saleorState.wishlist
+      ? {
+          ...this.saleorState.wishlist,
+          lines: alteredLines,
+        }
+      : {
+          lines: alteredLines,
+        };
+    this.handler.setWishlist(alteredWishlist);
+
+    return alteredWishlist;
+  };
+
+  removeItemFromWishlist = (variantId: string) => {
+    const lines = this.saleorState.wishlist?.lines || [];
+    const alteredLines = lines.filter(
+      variant => variant.variant.id !== variantId
+    );
+    const alteredWishlist = this.saleorState.wishlist
+      ? {
+          ...this.saleorState.wishlist,
+          lines: alteredLines,
+        }
+      : {
+          lines: alteredLines,
+        };
+    this.handler.setWishlist(alteredWishlist);
+
+    return alteredWishlist;
+  };
 }

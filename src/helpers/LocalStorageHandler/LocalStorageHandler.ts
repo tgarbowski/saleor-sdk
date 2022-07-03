@@ -2,6 +2,7 @@ import {
   ICheckoutModel,
   IJobsModel,
   IPaymentModel,
+  IWishlistModel,
   LocalStorageItems,
 } from "./types";
 import LocalStorageHandlerProxy from "./Proxy";
@@ -39,6 +40,10 @@ export class LocalStorageHandler extends LocalStorageHandlerProxy {
 
   setCheckout(checkout: ICheckoutModel | null): void {
     this.saveObject(LocalStorageItems.CHECKOUT, checkout);
+  }
+
+  setWishlist(wishlist: IWishlistModel | null): void {
+    this.saveObject(LocalStorageItems.WISHLIST, wishlist);
   }
 
   setPayment(payment: IPaymentModel | null): void {

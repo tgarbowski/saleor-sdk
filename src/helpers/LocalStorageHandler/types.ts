@@ -14,6 +14,7 @@ export enum LocalStorageItems {
   CSRF_TOKEN = "csrf_token",
   CHECKOUT = "data_checkout",
   PAYMENT = "data_payment",
+  WISHLIST = "data_wishlist",
 }
 export enum LocalStorageEvents {
   CLEAR = "clear",
@@ -118,6 +119,15 @@ export interface ICheckoutModel {
   availableShippingMethods?: Checkout_availableShippingMethods[];
   availablePaymentGateways?: Checkout_availablePaymentGateways[];
   shippingMethod?: ICheckoutModelShippingMethod | null;
+}
+
+export interface IWishlistModel {
+  lines?: IWishlistModelLine[] | null | undefined;
+}
+
+export interface IWishlistModelLine {
+  id?: string;
+  variant: ICheckoutModelLineVariant;
 }
 
 export interface IPaymentModel {
