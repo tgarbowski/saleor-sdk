@@ -1,3 +1,4 @@
+import { IPricingModel } from "../../helpers";
 import { SaleorState } from "../../state";
 import { LocalStorageHandler } from "../../helpers/LocalStorageHandler/LocalStorageHandler";
 
@@ -129,7 +130,13 @@ export class LocalStorageManager {
     return alteredCheckout;
   };
 
-  addItemToWishlist = (variantId: string) => {
+  addItemToWishlist = (
+    variantId: string,
+    slug: string,
+    thumbnail: string,
+    thumbnail2x: string,
+    pricing: IPricingModel
+  ) => {
     const lines = this.saleorState.wishlist?.lines || [];
     let variantInWishlist = lines.find(
       variant => variant.variant.id === variantId
@@ -143,6 +150,10 @@ export class LocalStorageManager {
       variantInWishlist = {
         variant: {
           id: variantId,
+          pricing,
+          slug,
+          thumbnail,
+          thumbnail2x,
         },
       };
       alteredLines.push(variantInWishlist);

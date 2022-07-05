@@ -1,6 +1,6 @@
 import { SaleorState, SaleorStateLoaded } from "../../state";
 import { LocalStorageManager } from "../../data";
-import { ErrorListener, IWishlistModel } from "../../helpers";
+import { ErrorListener, IPricingModel, IWishlistModel } from "../../helpers";
 import { StateItems } from "../../state/types";
 
 export class SaleorWishlistAPI extends ErrorListener {
@@ -35,8 +35,20 @@ export class SaleorWishlistAPI extends ErrorListener {
     );
   }
 
-  addItem = (variantId: string) => {
-    this.localStorageManager.addItemToWishlist(variantId);
+  addItem = (
+    variantId: string,
+    slug: string,
+    thumbnail: string,
+    thumbnail2x: string,
+    pricing: IPricingModel
+  ) => {
+    this.localStorageManager.addItemToWishlist(
+      variantId,
+      slug,
+      thumbnail,
+      thumbnail2x,
+      pricing
+    );
   };
 
   removeItem = (variantId: string) => {

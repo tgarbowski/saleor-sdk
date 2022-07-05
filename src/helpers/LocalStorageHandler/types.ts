@@ -127,7 +127,36 @@ export interface IWishlistModel {
 
 export interface IWishlistModelLine {
   id?: string;
-  variant: ICheckoutModelLineVariant;
+  variant: IWishlistModelLineVariant;
+}
+
+export interface IWishlistModelLineVariant {
+  id: string;
+  slug: string;
+  thumbnail: string;
+  thumbnail2x: string;
+  pricing: IPricingModel;
+}
+
+export interface IPricingModel {
+  onSale: boolean | null;
+  priceRangeUndiscounted: IPriceRangeModel | null;
+  priceRange: IPriceRangeModel | null;
+}
+
+export interface IPriceRangeModel {
+  start: IPriceStartStopModel | null;
+  stop: IPriceStartStopModel | null;
+}
+
+export interface IPriceStartStopModel {
+  gross: IPriceGrossNetModel;
+  net: IPriceGrossNetModel;
+}
+
+export interface IPriceGrossNetModel {
+  amount: number;
+  currency: string;
 }
 
 export interface IPaymentModel {
