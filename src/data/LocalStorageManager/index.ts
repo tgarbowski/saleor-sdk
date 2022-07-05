@@ -132,10 +132,10 @@ export class LocalStorageManager {
 
   addItemToWishlist = (
     variantId: string,
-    slug: string,
-    thumbnail: string,
-    thumbnail2x: string,
-    pricing: IPricingModel
+    slug: string | undefined,
+    thumbnail: string | undefined,
+    thumbnail2x: string | undefined,
+    pricing: IPricingModel | undefined
   ) => {
     const lines = this.saleorState.wishlist?.lines || [];
     let variantInWishlist = lines.find(

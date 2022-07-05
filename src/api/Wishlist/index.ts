@@ -37,10 +37,10 @@ export class SaleorWishlistAPI extends ErrorListener {
 
   addItem = (
     variantId: string,
-    slug: string,
-    thumbnail: string,
-    thumbnail2x: string,
-    pricing: IPricingModel
+    slug: string | undefined,
+    thumbnail: string | undefined,
+    thumbnail2x: string | undefined,
+    pricing: IPricingModel | undefined
   ) => {
     this.localStorageManager.addItemToWishlist(
       variantId,

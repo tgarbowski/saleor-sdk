@@ -132,10 +132,10 @@ export interface IWishlistModelLine {
 
 export interface IWishlistModelLineVariant {
   id: string;
-  slug: string;
-  thumbnail: string;
-  thumbnail2x: string;
-  pricing: IPricingModel;
+  slug: string | undefined;
+  thumbnail: string | undefined;
+  thumbnail2x: string | undefined;
+  pricing: IPricingModel | undefined;
 }
 
 export interface IPricingModel {
