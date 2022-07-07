@@ -131,7 +131,7 @@ export class LocalStorageManager {
 
   addItemToWishlist = (productId: string) => {
     const lines = this.saleorState.wishlist?.lines || [];
-    const productInWishlist = lines.find(line => line !== productId);
+    const productInWishlist = lines.find(line => line === productId);
     const alteredLines = lines.filter(line => line !== productId);
     if (productInWishlist) {
       alteredLines.push(productInWishlist);
