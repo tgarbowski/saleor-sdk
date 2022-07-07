@@ -122,11 +122,7 @@ export interface ICheckoutModel {
 }
 
 export interface IWishlistModel {
-  lines?: IWishlistModelLine[] | null | undefined;
-}
-
-export interface IWishlistModelLine {
-  productId?: string;
+  lines?: string[] | null | undefined;
 }
 
 export interface IPricingModel {

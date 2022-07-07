@@ -1,16 +1,12 @@
 import { SaleorState, SaleorStateLoaded } from "../../state";
 import { LocalStorageManager } from "../../data";
-import {
-  ErrorListener,
-  IWishlistModel,
-  IWishlistModelLine,
-} from "../../helpers";
+import { ErrorListener, IWishlistModel } from "../../helpers";
 import { StateItems } from "../../state/types";
 
 export class SaleorWishlistAPI extends ErrorListener {
   loaded: boolean;
 
-  wishlist?: IWishlistModelLine[] | null | undefined;
+  wishlist?: string[] | null | undefined;
 
   private localStorageManager: LocalStorageManager;
 

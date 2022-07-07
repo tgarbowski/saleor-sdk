@@ -131,15 +131,12 @@ export class LocalStorageManager {
 
   addItemToWishlist = (productId: string) => {
     const lines = this.saleorState.wishlist?.lines || [];
-    let productInWishlist = lines.find(line => line.productId !== productId);
-    const alteredLines = lines.filter(line => line.productId !== productId);
+    const productInWishlist = lines.find(line => line !== productId);
+    const alteredLines = lines.filter(line => line !== productId);
     if (productInWishlist) {
       alteredLines.push(productInWishlist);
     } else {
-      productInWishlist = {
-        productId,
-      };
-      alteredLines.push(productInWishlist);
+      alteredLines.push(productId);
     }
     const alteredWishlist = this.saleorState.wishlist
       ? {
@@ -156,7 +153,7 @@ export class LocalStorageManager {
 
   removeItemFromWishlist = (productId: string) => {
     const lines = this.saleorState.wishlist?.lines || [];
-    const alteredLines = lines.filter(line => line.productId !== productId);
+    const alteredLines = lines.filter(line => line !== productId);
     const alteredWishlist = this.saleorState.wishlist
       ? {
           ...this.saleorState.wishlist,
