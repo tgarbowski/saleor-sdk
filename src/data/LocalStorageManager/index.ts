@@ -1,4 +1,3 @@
-import { IPricingModel } from "../../helpers";
 import { SaleorState } from "../../state";
 import { LocalStorageHandler } from "../../helpers/LocalStorageHandler/LocalStorageHandler";
 
@@ -130,33 +129,17 @@ export class LocalStorageManager {
     return alteredCheckout;
   };
 
-  addItemToWishlist = (
-    variantId: string,
-    slug: string | undefined,
-    thumbnail: string | undefined,
-    thumbnail2x: string | undefined,
-    pricing: IPricingModel | undefined
-  ) => {
+  addItemToWishlist = (productId: string) => {
     const lines = this.saleorState.wishlist?.lines || [];
-    let variantInWishlist = lines.find(
-      variant => variant.variant.id === variantId
-    );
-    const alteredLines = lines.filter(
-      variant => variant.variant.id !== variantId
-    );
-    if (variantInWishlist) {
-      alteredLines.push(variantInWishlist);
+    let productInWishlist = lines.find(line => line.productId !== productId);
+    const alteredLines = lines.filter(line => line.productId !== productId);
+    if (productInWishlist) {
+      alteredLines.push(productInWishlist);
     } else {
-      variantInWishlist = {
-        variant: {
-          id: variantId,
-          pricing,
-          slug,
-          thumbnail,
-          thumbnail2x,
-        },
+      productInWishlist = {
+        productId,
       };
-      alteredLines.push(variantInWishlist);
+      alteredLines.push(productInWishlist);
     }
     const alteredWishlist = this.saleorState.wishlist
       ? {
@@ -171,11 +154,9 @@ export class LocalStorageManager {
     return alteredWishlist;
   };
 
-  removeItemFromWishlist = (variantId: string) => {
+  removeItemFromWishlist = (productId: string) => {
     const lines = this.saleorState.wishlist?.lines || [];
-    const alteredLines = lines.filter(
-      variant => variant.variant.id !== variantId
-    );
+    const alteredLines = lines.filter(line => line.productId !== productId);
     const alteredWishlist = this.saleorState.wishlist
       ? {
           ...this.saleorState.wishlist,

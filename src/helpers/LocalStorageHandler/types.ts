@@ -126,16 +126,7 @@ export interface IWishlistModel {
 }
 
 export interface IWishlistModelLine {
-  id?: string;
-  variant: IWishlistModelLineVariant;
-}
-
-export interface IWishlistModelLineVariant {
-  id: string;
-  slug: string | undefined;
-  thumbnail: string | undefined;
-  thumbnail2x: string | undefined;
-  pricing: IPricingModel | undefined;
+  productId?: string;
 }
 
 export interface IPricingModel {

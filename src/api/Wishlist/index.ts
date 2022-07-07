@@ -1,12 +1,16 @@
 import { SaleorState, SaleorStateLoaded } from "../../state";
 import { LocalStorageManager } from "../../data";
-import { ErrorListener, IPricingModel, IWishlistModel } from "../../helpers";
+import {
+  ErrorListener,
+  IWishlistModel,
+  IWishlistModelLine,
+} from "../../helpers";
 import { StateItems } from "../../state/types";
 
 export class SaleorWishlistAPI extends ErrorListener {
   loaded: boolean;
 
-  wishlist?: IWishlistModel;
+  wishlist?: IWishlistModelLine[] | null | undefined;
 
   private localStorageManager: LocalStorageManager;
 
@@ -24,7 +28,7 @@ export class SaleorWishlistAPI extends ErrorListener {
     this.saleorState.subscribeToChange(
       StateItems.WISHLIST,
       (wishlist: IWishlistModel) => {
-        this.wishlist = wishlist;
+        this.wishlist = wishlist.lines;
       }
     );
     this.saleorState.subscribeToChange(
@@ -35,23 +39,11 @@ export class SaleorWishlistAPI extends ErrorListener {
     );
   }
 
-  addItem = (
-    variantId: string,
-    slug: string | undefined,
-    thumbnail: string | undefined,
-    thumbnail2x: string | undefined,
-    pricing: IPricingModel | undefined
-  ) => {
-    this.localStorageManager.addItemToWishlist(
-      variantId,
-      slug,
-      thumbnail,
-      thumbnail2x,
-      pricing
-    );
+  addItem = (productId: string) => {
+    this.localStorageManager.addItemToWishlist(productId);
   };
 
-  removeItem = (variantId: string) => {
-    this.localStorageManager.removeItemFromWishlist(variantId);
+  removeItem = (productId: string) => {
+    this.localStorageManager.removeItemFromWishlist(productId);
   };
 }
