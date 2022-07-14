@@ -711,6 +711,10 @@ export interface ProductDetails_variants {
   attributes: ProductDetails_variants_attributes[];
 }
 
+export interface ProductDetails_collections {
+  name: string | null;
+  slug: string | null;
+}
 export interface ProductDetails {
   __typename: "Product";
   /**
@@ -759,4 +763,5 @@ export interface ProductDetails {
    * Whether the product is in stock and visible or not.
    */
   isAvailable: boolean | null;
+  collections?: ProductDetails_collections[] | null
 }
