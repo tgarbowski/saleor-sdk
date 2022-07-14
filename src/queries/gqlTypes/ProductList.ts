@@ -243,6 +243,12 @@ export interface ProductList_products_edges_node {
    * Lists the storefront product's pricing, the current price and discounts, only meant for displaying.
    */
   pricing: ProductList_products_edges_node_pricing | null;
+  category: ProductList_products_edges_node_category | null;
+}
+
+export interface ProductList_products_edges_node_category {
+  name: string;
+  slug: string;
 }
 
 export interface ProductList_products_edges {
