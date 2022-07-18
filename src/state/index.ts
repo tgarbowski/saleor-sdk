@@ -147,9 +147,12 @@ export class SaleorState extends NamedObservable<StateItems> {
       });
       this.onPaymentUpdate(LocalStorageHandler.getPayment());
     }
-    const wishlistData = localStorage.getItem("data_wishlist") || "[]";
-    const wishlistLines = JSON.parse(wishlistData)?.lines;
-    this.wishlist = { lines: wishlistLines };
+    const wishlistData = LocalStorageHandler.getWishlist();
+    if (wishlistData) {
+      this.wishlist = wishlistData;
+    } else {
+      this.wishlist = undefined;
+    }
   };
 
   private verityToken = async () => {

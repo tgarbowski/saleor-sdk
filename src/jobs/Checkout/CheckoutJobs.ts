@@ -39,11 +39,6 @@ class CheckoutJobs extends JobsHandler<{}> {
     this.localStorageHandler = localStorageHandler;
   }
 
-  provideWishlist = () => {
-    const wishlist = LocalStorageHandler.getWishlist();
-    this.localStorageHandler.setWishlist(wishlist);
-  };
-
   provideCheckout = async ({
     isUserSignedIn,
     channel,
