@@ -133,6 +133,10 @@ export class LocalStorageManager {
     const lines = this.saleorState.wishlist?.lines || [];
     const productInWishlist = lines.find(line => line === productId);
     const alteredLines = lines.filter(line => line !== productId);
+    // eslint-disable-next-line no-console
+    console.log("productInWishlist ", productInWishlist);
+    // eslint-disable-next-line no-console
+    console.log("alteredLines ", alteredLines);
     if (productInWishlist) {
       alteredLines.push(productInWishlist);
     } else {
@@ -146,6 +150,8 @@ export class LocalStorageManager {
       : {
           lines: alteredLines,
         };
+    // eslint-disable-next-line no-console
+    console.log(alteredWishlist);
     this.handler.setWishlist(alteredWishlist);
 
     return alteredWishlist;
