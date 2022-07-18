@@ -125,6 +125,7 @@ export class SaleorState extends NamedObservable<StateItems> {
    * Initialize class members with cached or fetched data.
    */
   private initializeState = async (config: Config) => {
+    this.jobsManager.run("wishlist", "provideWishlist", undefined);
     /**
      * Before making any fetch, first try to verify token if it exists.
      */
@@ -147,7 +148,6 @@ export class SaleorState extends NamedObservable<StateItems> {
       });
       this.onPaymentUpdate(LocalStorageHandler.getPayment());
     }
-    this.jobsManager.run("wishlist", "provideWishlist", undefined);
   };
 
   private verityToken = async () => {
