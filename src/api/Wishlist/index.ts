@@ -24,7 +24,8 @@ export class SaleorWishlistAPI extends ErrorListener {
     this.saleorState.subscribeToChange(
       StateItems.WISHLIST,
       (wishlist: IWishlistModel) => {
-        this.wishlist = wishlist.lines;
+        const { lines } = wishlist || {};
+        this.wishlist = lines;
       }
     );
     this.saleorState.subscribeToChange(
