@@ -12,6 +12,10 @@ export class LocalStorageHandler extends LocalStorageHandlerProxy {
     return LocalStorageHandlerProxy.retrieveObject(LocalStorageItems.CHECKOUT);
   }
 
+  static getWishlist(): IWishlistModel | null {
+    return LocalStorageHandlerProxy.retrieveObject(LocalStorageItems.WISHLIST);
+  }
+
   static getPayment(): IPaymentModel | null {
     return LocalStorageHandlerProxy.retrieveObject(LocalStorageItems.PAYMENT);
   }
