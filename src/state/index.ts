@@ -147,17 +147,7 @@ export class SaleorState extends NamedObservable<StateItems> {
       });
       this.onPaymentUpdate(LocalStorageHandler.getPayment());
     }
-    const wishlistData = window.localStorage.getItem(
-      LocalStorageItems.WISHLIST
-    );
-    const wishlistLines = wishlistData
-      ? JSON.parse(wishlistData)?.lines
-      : undefined;
-    if (wishlistData) {
-      this.wishlist = { lines: wishlistLines };
-    } else {
-      this.wishlist = undefined;
-    }
+    this.jobsManager.run("wishlist", "provideWishlist", undefined);
   };
 
   private verityToken = async () => {

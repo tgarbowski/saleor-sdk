@@ -66,9 +66,11 @@ class LocalStorageHandlerProxy extends NamedObservable<
     name: LocalStorageItems
   ): T | null {
     if (!LOCAL_STORAGE_EXISTS) {
+      console.log("locale storage does not exist");
       return null;
     }
     const item = window.localStorage.getItem(name);
+    console.log(item);
     if (item) {
       return JSON.parse(item);
     }
