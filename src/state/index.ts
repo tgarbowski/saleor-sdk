@@ -125,6 +125,7 @@ export class SaleorState extends NamedObservable<StateItems> {
    * Initialize class members with cached or fetched data.
    */
   private initializeState = async (config: Config) => {
+    this.jobsManager.run("wishlist", "provideWishlist", undefined);
     /**
      * Before making any fetch, first try to verify token if it exists.
      */
@@ -133,7 +134,6 @@ export class SaleorState extends NamedObservable<StateItems> {
       await this.verityToken();
     }
     this.onSignInTokenVerifyingUpdate(false);
-    this.jobsManager.run("wishlist", "provideWishlist", undefined);
     /**
      * Proceed with state initialization.
      */
