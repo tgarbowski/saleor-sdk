@@ -9,7 +9,7 @@ export const saleList = gql`
   ${baseSaleFragment}
   ${pageInfo}
   query SaleList($first: Int!, $after: String) {
-    categories(first: $first, after: $after) {
+    sales(first: $first, after: $after) {
       edges {
         node {
           ...BaseSale
