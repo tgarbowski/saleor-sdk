@@ -20,7 +20,7 @@ export interface UpdatePrivateNipMetadata_updatePrivateMetadata_item_metadata {
 }
 
 export interface UpdatePrivateNipMetadata_updatePrivateMetadata_item {
-  __typename: "ProductVariant" | "Product" | "ProductType" | "Attribute" | "Category" | "Collection" | "DigitalContent" | "Warehouse" | "ShippingZone" | "ShippingMethodType" | "User" | "Checkout" | "ShippingMethod" | "GiftCard" | "App" | "Order" | "Fulfillment" | "Invoice" | "Payment" | "Voucher" | "Page" | "PageType" | "Sale" | "MenuItem" | "Menu";
+  __typename: "ProductVariant" | "Product" | "ProductType" | "Attribute" | "Category" | "Sale" | "Collection" | "DigitalContent" | "Warehouse" | "ShippingZone" | "ShippingMethodType" | "User" | "Checkout" | "ShippingMethod" | "GiftCard" | "App" | "Order" | "Fulfillment" | "Invoice" | "Payment" | "Voucher" | "Page" | "PageType" | "Sale" | "MenuItem" | "Menu";
   /**
    * List of public metadata items. Can be accessed without permissions.
    */

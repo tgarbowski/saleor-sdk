@@ -14,6 +14,7 @@ import { CollectionsAPI } from "./collections/collections";
 import { CategoriesAPI } from "./categories/categories";
 import { ProductsAPI } from "./products/products";
 import { SaleorWishlistAPI } from "./Wishlist";
+import { SalesAPI } from "./sales/sales";
 
 export * from "./Checkout";
 export * from "./Cart";
@@ -28,6 +29,8 @@ export class SaleorAPI {
   cart: SaleorCartAPI;
 
   categories: CategoriesAPI;
+
+  sales: SalesAPI;
 
   collections: CollectionsAPI;
 
@@ -79,6 +82,7 @@ export class SaleorAPI {
       config
     );
     this.categories = new CategoriesAPI(client);
+    this.sales = new SalesAPI(client);
     this.collections = new CollectionsAPI(client, config);
     this.products = new ProductsAPI(client, config);
 
