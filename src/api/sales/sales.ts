@@ -32,7 +32,7 @@ export class SalesAPI
   }
 
   /**
-   * Method returning category details
+   * Method returning sale details
    * @param variables Details parameters
    */
   getDetails = async (variables: SaleDetailsVariables) => {

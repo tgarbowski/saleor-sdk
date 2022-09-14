@@ -16,13 +16,13 @@ import BaseList, {
     SaleListVariables
   > {
     getPageInfo: GetPageInfo<SaleListQuery> = result =>
-      result.data.categories?.pageInfo!;
+      result.data.sales?.pageInfo!;
   
     getTotalCount: GetTotalCount<SaleListQuery> = result =>
-      result.data.categories?.totalCount!;
+      result.data.sales?.totalCount!;
   
     mapQueryData: MapQueryData<SaleListQuery, BaseSale> = data =>
-      data.categories?.edges.map(({ node }) => node);
+      data.sales?.edges.map(({ node }) => node);
   
     query = (variables: SaleListVariables) =>
       this.client!.query<SaleListQuery, SaleListVariables>({

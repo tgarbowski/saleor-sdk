@@ -59,7 +59,7 @@ export interface SaleChildrenList_sale_children_edges_node {
      */
     id: string;
     /**
-     * List of children of the category.
+     * List of children of the sale..
      */
     children: SaleChildrenList_sale_children | null;
   }

@@ -56,7 +56,7 @@ export interface SaleList_sales_edges_node {
     /**
      * List of the shop's categories.
      */
-    categories: SaleList_sales | null;
+    sales: SaleList_sales | null;
   }
   
   export interface SaleListVariables {
