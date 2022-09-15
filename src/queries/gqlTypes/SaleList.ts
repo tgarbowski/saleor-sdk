@@ -59,7 +59,7 @@ export interface SaleList {
   sales: SaleList_sales | null;
 }
 
-export interface CollectionListVariables {
+export interface SaleListVariables {
   first: number;
   after?: string | null;
   channel?: string | null;

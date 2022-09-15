@@ -26,7 +26,7 @@ export class SaleList extends BaseList<
 
   query = (variables: SaleListVariables) =>
     this.client!.query<SaleListQuery, SaleListVariables>({
-      query: collections,
+      query: sales,
       variables,
     });
 }
