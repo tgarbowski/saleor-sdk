@@ -26,9 +26,6 @@ export interface SaleDetails_sale {
    */
   id: string;
   name: string;
-  slug: string;
-  seoDescription: string | null;
-  seoTitle: string | null;
   backgroundImage: SaleDetails_sale_backgroundImage | null;
   description: any | null;
 }
@@ -42,6 +39,5 @@ export interface SaleDetails {
 
 export interface SaleDetailsVariables {
   id?: string | null;
-  slug?: string | null;
   channel?: string | null;
 }

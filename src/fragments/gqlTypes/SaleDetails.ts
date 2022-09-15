@@ -26,9 +26,6 @@ export interface SaleDetails {
    */
   id: string;
   name: string;
-  slug: string;
-  seoDescription: string | null;
-  seoTitle: string | null;
   backgroundImage: SaleDetails_backgroundImage | null;
   description: any | null;
 }

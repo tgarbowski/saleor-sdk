@@ -117,11 +117,6 @@ export const productFragment = gql`
       name
       slug
     }
-    sale {
-      id
-      name
-      slug
-    }
     images {
       id
       url

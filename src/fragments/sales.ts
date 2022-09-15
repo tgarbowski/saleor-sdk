@@ -4,9 +4,6 @@ export const baseSaleFragment = gql`
   fragment BaseSale on Sale {
     id
     name
-    slug
-    seoDescription
-    seoTitle
   }
 `;
 
