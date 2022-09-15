@@ -244,8 +244,13 @@ export interface ProductList_products_edges_node {
    */
   pricing: ProductList_products_edges_node_pricing | null;
   collections?: ProductList_products_edges_node_collections[] | null;
+  sales?: ProductList_products_edges_node_sales[] | null;
 }
 
+export interface ProductList_products_edges_node_sales {
+  name: string;
+  slug: string;
+}
 export interface ProductList_products_edges_node_collections {
   name: string;
   slug: string;

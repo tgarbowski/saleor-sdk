@@ -8,14 +8,13 @@
 // ====================================================
 
 export interface BaseSale {
-    __typename: "Sale";
-    /**
-     * The ID of the object.
-     */
-    id: string;
-    name: string;
-    slug: string;
-    seoDescription: string | null;
-    seoTitle: string | null;
-  }
-  
+  __typename: "Sale";
+  /**
+   * The ID of the object.
+   */
+  id: string;
+  name: string;
+  slug: string;
+  seoDescription: string | null;
+  seoTitle: string | null;
+}

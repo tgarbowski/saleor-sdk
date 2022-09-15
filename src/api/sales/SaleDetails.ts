@@ -4,7 +4,7 @@ import {
   SaleDetailsVariables,
 } from "../../queries/gqlTypes/SaleDetails";
 import { SaleDetails as Sale } from "../../fragments/gqlTypes/SaleDetails";
-import { saleDetails } from "../../queries/sale";
+import { saleDetails } from "../../queries/sales";
 
 export class SaleDetails extends BaseDetails<
   SaleDetailsQuery,

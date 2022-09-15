@@ -50,3 +50,20 @@ export const getCollectionsQuery = gql`
     }
   }
 `;
+
+export const getSalesQuery = gql`
+  query GetSales($cursor: String, $perPage: Int) {
+    sales(after: $cursor, first: $perPage) {
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+  }
+`;

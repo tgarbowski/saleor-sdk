@@ -21,6 +21,10 @@ export const baseProductFragment = gql`
       slug
       name
     }
+    sales {
+      slug
+      name
+    }
   }
 `;
 
@@ -109,6 +113,11 @@ export const productFragment = gql`
     ...ProductPricingField
     description
     category {
+      id
+      name
+      slug
+    }
+    sale {
       id
       name
       slug

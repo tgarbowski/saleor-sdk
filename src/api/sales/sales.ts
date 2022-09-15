@@ -1,6 +1,4 @@
 import ApolloClient from "apollo-client";
-import { SaleAncestorsListVariables } from "../../queries/gqlTypes/SaleAncestorsList";
-import { SaleChildrenListVariables } from "../../queries/gqlTypes/SaleChildrenList";
 import {
   SaleDetails as SaleDetailsQuery,
   SaleDetailsVariables,
@@ -12,9 +10,8 @@ import {
 } from "../../queries/gqlTypes/SaleList";
 import { BaseSale } from "../../fragments/gqlTypes/BaseSale";
 import { WithDetails, WithList } from "../types";
+import { ConfigInput } from "../../types";
 import { SaleList } from "./SaleList";
-import { SaleAncestorsList } from "./SaleAncestorsList";
-import { SaleChildrenList } from "./SaleChildrenList";
 import { SaleDetails } from "./SaleDetails";
 
 export class SalesAPI
@@ -27,46 +24,34 @@ export class SalesAPI
     WithList<SaleListQuery, BaseSale, SaleListVariables> {
   private client: ApolloClient<any>;
 
-  constructor(client: ApolloClient<any>) {
+  // temporary solution, might change in future
+  private config: ConfigInput;
+
+  constructor(client: ApolloClient<any>, config: ConfigInput) {
     this.client = client;
+    this.config = config;
   }
 
   /**
-   * Method returning sale details
+   * Method returning collection details
    * @param variables Details parameters
    */
   getDetails = async (variables: SaleDetailsVariables) => {
     const details = new SaleDetails(this.client);
 
-    await details.init(variables);
+    await details.init({ channel: this.config.channel, ...variables });
 
     return details;
   };
 
   /**
-   * Method returning list of categories with ability to request next page
+   * Method returning list of collections with ability to request next page
    * @param params List parameters
    */
   getList = async (variables: SaleListVariables) => {
     const list = new SaleList(this.client);
 
-    await list.init(variables);
-
-    return list;
-  };
-
-  getAncestors = async (variables: SaleAncestorsListVariables) => {
-    const list = new SaleAncestorsList(this.client);
-
-    await list.init(variables);
-
-    return list;
-  };
-
-  getChildren = async (variables: SaleChildrenListVariables) => {
-    const list = new SaleChildrenList(this.client);
-
-    await list.init(variables);
+    await list.init({ channel: this.config.channel, ...variables });
 
     return list;
   };

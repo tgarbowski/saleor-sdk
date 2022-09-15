@@ -1,74 +1,44 @@
 import gql from "graphql-tag";
-import { pageInfo } from "../fragments/pageInfo";
 import {
   baseSaleFragment,
   saleFragment,
 } from "../fragments/sales";
+import { pageInfo } from "../fragments/pageInfo";
 
-export const saleList = gql`
+export const sales = gql`
   ${baseSaleFragment}
   ${pageInfo}
-  query SaleList($first: Int!, $after: String) {
-    sales(first: $first, after: $after) {
+  query SaleList(
+    $first: Int!
+    $after: String
+    $sortBy: SaleSortingInput
+    $filter: SaleFilterInput
+    $channel: String
+  ) {
+    sales(
+      first: $first
+      after: $after
+      sortBy: $sortBy
+      filter: $filter
+      channel: $channel
+    ) {
       edges {
         node {
           ...BaseSale
         }
       }
-      totalCount
       pageInfo {
         ...PageInfo
       }
-    }
-  }
-`;
-
-export const saleChildrenList = gql`
-  ${baseSaleFragment}
-  ${pageInfo}
-  query SaleChildrenList($id: ID!, $first: Int!, $after: String) {
-    sale(id: $id) {
-      id
-      children(first: $first, after: $after) {
-        edges {
-          node {
-            ...BaseSale
-          }
-        }
-        totalCount
-        pageInfo {
-          ...PageInfo
-        }
-      }
-    }
-  }
-`;
-
-export const saleAncestorsList = gql`
-  ${baseSaleFragment}
-  ${pageInfo}
-  query SaleAncestorsList($id: ID!, $first: Int!, $after: String) {
-    sale(id: $id) {
-      id
-      ancestors(first: $first, after: $after) {
-        edges {
-          node {
-            ...BaseSale
-          }
-        }
-        totalCount
-        pageInfo {
-          ...PageInfo
-        }
-      }
+      totalCount
     }
   }
 `;
 
 export const saleDetails = gql`
   ${saleFragment}
-  query SaleDetails($id: ID, $slug: String) {
-    sale(id: $id, slug: $slug) {
+  query SaleDetails($id: ID, $slug: String, $channel: String) {
+    sale(id: $id, slug: $slug, channel: $channel) {
       ...SaleDetails
     }
   }

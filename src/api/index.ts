@@ -82,7 +82,7 @@ export class SaleorAPI {
       config
     );
     this.categories = new CategoriesAPI(client);
-    this.sales = new SalesAPI(client);
+    this.sales = new SalesAPI(client, config);
     this.collections = new CollectionsAPI(client, config);
     this.products = new ProductsAPI(client, config);
 
