@@ -24,8 +24,11 @@ export interface GetSales_sales_edges_node {
   /**
    * The ID of the object.
    */
-  id: string;
-  name: string;
+   id: string;
+   name: string;
+   slug: string;
+   seoDescription: string | null;
+   seoTitle: string | null;
 }
 
 export interface GetSales_sales_edges {
