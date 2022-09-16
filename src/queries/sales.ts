@@ -37,8 +37,8 @@ export const sales = gql`
 
 export const saleDetails = gql`
   ${saleFragment}
-  query SaleDetails($id: ID, $name: String, $channel: String) {
-    sale(id: $id, name: $name, channel: $channel) {
+  query SaleDetails($id: ID, $channel: String) {
+    sale(id: $id, channel: $channel) {
       ...SaleDetails
     }
   }
