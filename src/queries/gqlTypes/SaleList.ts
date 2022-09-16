@@ -3,6 +3,8 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { SaleFilterInput } from "src/gqlTypes/globalTypes";
+
 // ====================================================
 // GraphQL query operation: SaleList
 // ====================================================
@@ -59,5 +61,6 @@ export interface SaleList {
 export interface SaleListVariables {
   first: number;
   after?: string | null;
+  filter?: SaleFilterInput | null;
   channel?: string | null;
 }

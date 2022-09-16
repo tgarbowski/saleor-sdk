@@ -59,14 +59,14 @@ export const QUERIES = {
       query: Collections.collections,
       ...options,
     }),
-    SaleList: (
-      client: ApolloClient<any>,
-      options: QueryOptions<SaleListVariables>
-    ): ObservableQuery<SaleList, any> =>
-      client.watchQuery({
-        query: Sales.sales,
-        ...options,
-      }),
+  SaleList: (
+    client: ApolloClient<any>,
+    options: QueryOptions<SaleListVariables>
+  ): ObservableQuery<SaleList, any> =>
+    client.watchQuery({
+      query: Sales.sales,
+      ...options,
+    }),
   GetShopDetails: <TCacheShape>(
     client: ApolloClient<TCacheShape>,
     options: QueryOptions<null>

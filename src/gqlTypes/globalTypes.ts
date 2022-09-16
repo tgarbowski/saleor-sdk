@@ -542,6 +542,10 @@ export interface CollectionFilterInput {
   ids?: (string | null)[] | null;
 }
 
+export interface SaleFilterInput {
+  ids?: (string | null)[] | null;
+}
+
 export interface CollectionSortingInput {
   direction: OrderDirection;
   field: CollectionSortField;
@@ -575,7 +579,6 @@ export interface ProductFilterInput {
   categories?: (string | null)[] | null;
   sales?: (string | null)[] | null;
   hasCategory?: boolean | null;
-  hasSale?: boolean | null;
   attributes?: (AttributeInput | null)[] | null;
   stockAvailability?: StockAvailability | null;
   stocks?: ProductStockFilterInput | null;

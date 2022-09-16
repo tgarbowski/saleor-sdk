@@ -32,7 +32,7 @@ export interface SaleDetails_sale {
 
 export interface SaleDetails {
   /**
-   * Look up a collection by ID.
+   * Look up a sale by ID.
    */
   sale: SaleDetails_sale | null;
 }
