@@ -40,4 +40,5 @@ export interface SaleDetails {
 export interface SaleDetailsVariables {
   id?: string | null;
   channel?: string | null;
+  name?: string | null;
 }
