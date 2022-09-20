@@ -26,6 +26,4 @@ export interface SaleDetails {
    */
   id: string;
   name: string;
-  backgroundImage: SaleDetails_backgroundImage | null;
-  description: any | null;
 }

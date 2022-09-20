@@ -26,8 +26,6 @@ export interface SaleDetails_sale {
    */
   id: string;
   name: string;
-  backgroundImage: SaleDetails_sale_backgroundImage | null;
-  description: any | null;
 }
 
 export interface SaleDetails {

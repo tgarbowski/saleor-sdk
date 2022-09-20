@@ -11,10 +11,5 @@ export const saleFragment = gql`
   ${baseSaleFragment}
   fragment SaleDetails on Sale {
     ...BaseSale
-    backgroundImage {
-      alt
-      url
-    }
-    description
   }
 `;
