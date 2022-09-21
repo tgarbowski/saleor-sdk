@@ -21,9 +21,6 @@ export const baseProductFragment = gql`
       slug
       name
     }
-    sales {
-      name
-    }
   }
 `;
 
