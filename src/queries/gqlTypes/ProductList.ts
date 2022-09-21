@@ -249,6 +249,7 @@ export interface ProductList_products_edges_node {
 
 export interface ProductList_products_edges_node_sales {
   name: string;
+  id: string;
 }
 export interface ProductList_products_edges_node_collections {
   name: string;

@@ -718,6 +718,7 @@ export interface ProductDetails_collections {
 
 export interface ProductDetails_sales {
   name: string | null;
+  id: string | null;
 }
 
 export interface ProductDetails {

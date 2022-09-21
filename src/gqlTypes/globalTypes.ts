@@ -94,6 +94,13 @@ export enum CollectionSortField {
   PUBLICATION_DATE = "PUBLICATION_DATE",
 }
 
+export enum SaleSortField {
+  AVAILABILITY = "AVAILABILITY",
+  NAME = "NAME",
+  PRODUCT_COUNT = "PRODUCT_COUNT",
+  PUBLICATION_DATE = "PUBLICATION_DATE",
+}
+
 /**
  * An enumeration.
  */
@@ -543,12 +550,19 @@ export interface CollectionFilterInput {
 }
 
 export interface SaleFilterInput {
+  search?: string | null;
+  metadata?: (MetadataFilter | null)[] | null;
   ids?: (string | null)[] | null;
 }
 
 export interface CollectionSortingInput {
   direction: OrderDirection;
   field: CollectionSortField;
+}
+
+export interface SaleSortingInput {
+  direction: OrderDirection;
+  field: SaleSortField;
 }
 
 export interface IntRangeInput {
