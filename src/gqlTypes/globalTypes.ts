@@ -585,6 +585,7 @@ export interface ProductFilterInput {
   isPublished?: boolean | null;
   collections?: (string | null)[] | null;
   categories?: (string | null)[] | null;
+  sales?:(string | null)[] | null;
   hasCategory?: boolean | null;
   attributes?: (AttributeInput | null)[] | null;
   stockAvailability?: StockAvailability | null;
